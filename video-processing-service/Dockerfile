@@ -14,9 +14,6 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install --only=production
 
-# NOTE: We copy only production code, so to run on local file do as below:
-# $ docker cp ./sample.mov <CONTAINER_ID>:/app/sample.mov
-# $ docker cp <CONTAINER_ID>:/app/processed-sample.mov ./processed-sample.mov
 COPY --from=builder /app/dist ./dist
 
 EXPOSE 3000
