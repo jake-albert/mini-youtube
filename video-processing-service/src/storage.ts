@@ -3,7 +3,7 @@ import fs from 'fs'
 import ffmpeg from 'fluent-ffmpeg'
 
 const RAW_VIDEOS_BUCKET_NAME = 'jma-mini-youtube-raw-videos'
-const PROCESSED_VIDEOS_BUCKET_NAME = 'jma-mini-youtube-raw-videos'
+const PROCESSED_VIDEOS_BUCKET_NAME = 'jma-mini-youtube-processed-videos'
 
 const LOCAL_RAW_VIDEOS_DIRECTORY = './raw-videos'
 const LOCAL_PROCESSED_VIDEOS_DIRECTORY = './processed-videos'
@@ -51,6 +51,8 @@ export async function uploadProcessedVideo(videoName: string) {
 
   const bucket = storage.bucket(PROCESSED_VIDEOS_BUCKET_NAME)
   await bucket.upload(localProcessedVideoPath, { destination: videoName })
+  // NOTE: We need to do this becuase even though this bucket is not without public access, it is
+  // still set to 'Subject to object ACLs'.
   await bucket.file(videoName).makePublic()
 
   console.log(

@@ -47,6 +47,7 @@ app.post('/process-video', async (req, res) => {
   return res.status(200).send('Processing finished successfully')
 })
 
+// NOTE: In the environment of Cloud Run this evaluates to 8080
 const port = process.env.PORT || 3000
 app.listen(port, () => {
   console.log(`Video processing service listening at http://localhost:${port}`)
