@@ -22,3 +22,8 @@ export default async function Home() {
     </main>
   )
 }
+
+// NOTE: In dev mode with a local server, Next.js does not cache server-side fetch requests.
+// When deploying to production server it automaically will so we'd not be able to see new videos.
+// See: https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#segment-level-caching
+export const revalidate = 30

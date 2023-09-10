@@ -41,7 +41,7 @@ export async function downloadRawVideo(videoName: string) {
 
   await storage.bucket(RAW_VIDEOS_BUCKET_NAME)
     .file(videoName)
-    .download({destination: localRawVideoPath })
+    .download({ destination: localRawVideoPath })
 
   console.log(`gs://${RAW_VIDEOS_BUCKET_NAME}/${videoName} downloaded to ${localRawVideoPath}`)
 }
