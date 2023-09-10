@@ -15,7 +15,6 @@ const firestore = new Firestore()
   });
 } */
 
-
 const videoCollectionId = 'videos'
 
 export interface Video {
