@@ -1,0 +1,10 @@
+[
+    {
+        "//": "In a real project we'd want to limit opening CORS just for client origin",
+        "origin": ["*"],
+        "responseHeader": ["Content-Type"],
+        "method": ["PUT"],
+        "maxAgeSeconds": 3600
+    }
+  ]
+  
