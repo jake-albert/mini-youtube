@@ -7,6 +7,7 @@ import {
   onAuthStateChanged,
   User
 } from 'firebase/auth'
+import { getFunctions } from 'firebase/functions'
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -17,6 +18,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig)
 const auth = getAuth(app)
+export const functions = getFunctions()
 
 export function signInWithGoogle() {
   return signInWithPopup(auth, new GoogleAuthProvider())
@@ -29,3 +31,4 @@ export function signOut() {
 export function onAuthStateChangedHelper(callback: (user: User | null) => void) {
   return onAuthStateChanged(auth, callback)
 }
+ 
